@@ -1,6 +1,11 @@
 function save() {
+    ////найти обьекты-поместить в массив их значения-передать
+    var  div= document.getElementById('list')
+    var elems = div.getElementsByTagName('*')
+    for(var i=0; i<elems.length; i++){ var elem_1=elems[i].getElementsByTagName('*'); elems[i]=elem_1[0];}
+    for(var i=0; i<elems.length; i++) elems[i]=elems[i].val();
     var Customer= {
-        'text': $('#text').val() ,
+        'text': elems_note,
      };
     $.ajax({
         contentType: "application/json; charset=utf-8",
