@@ -38,5 +38,25 @@ function load() {
 
 }
 
+function add() {
+    var l = document.createElement('li')
+    l.id="baba"
+    var o = document.createElement('textarea')
+    o.id = 'text222'
+    list.appendChild(l);
+    l.appendChild(o);
+}
+
+function del() {
+    var  div= document.getElementById('list')
+    var elems = div.getElementsByTagName('*')
+    elems[elems.length-1].parentNode.removeChild(elems[elems.length-1]);
+    var elems = div.getElementsByTagName('*')
+    elems[elems.length-1].parentNode.removeChild(elems[elems.length-1]);
+
+}
+
+
+
 
 
