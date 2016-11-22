@@ -3,9 +3,12 @@ function save() {
     var  div= document.getElementById('list')
     var elems = div.getElementsByTagName('*')
     for(var i=0; i<elems.length; i++){ var elem_1=elems[i].getElementsByTagName('*'); elems[i]=elem_1[0];}
-    for(var i=0; i<elems.length; i++) elems[i]=elems[i].val();
+   // for(var i=0; i<elems.length; i++) elems[i]=elems[i].val();
+    elems[0].id="papa";
+    $('#papa').valueOf("zasada7q");
+
     var Customer= {
-        'text': elems_note,
+        'text': elems,
      };
     $.ajax({
         contentType: "application/json; charset=utf-8",
