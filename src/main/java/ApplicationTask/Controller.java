@@ -48,7 +48,7 @@ public class Controller {
     {
 
         jdbcTemplate.query("SELECT task_text FROM TASK",(rs, rowNum) ->
-                new Task(rs.getString("task_text"))).
+                new Customer(rs.getString("task_text"))).
                 forEach(task -> s=(task.toString()));
         return  s;
     }
@@ -57,7 +57,6 @@ public class Controller {
     {
         jdbcTemplate.execute("drop table TASK");
         jdbcTemplate.execute("CREATE TABLE TASK (task_text TEXT NOT NULL);");
-
         jdbcTemplate.execute("INSERT INTO TASK (task_text) VALUES ('"+ mes+"')");
 
     }
