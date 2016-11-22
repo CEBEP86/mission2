@@ -1,8 +1,7 @@
 function save() {
     var Customer= {
         'text': $('#text').val() ,
-    };
-    var msg   = $('#text').serialize();
+     };
     $.ajax({
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -31,7 +30,7 @@ function load() {
         data: JSON.stringify(Customer),
         success: function(data) {
             $('#text').val(data.text)
-        },
+            },
         error:  function(xhr, str){
             alert('�������� ������: ' + xhr.responseCode);
         }

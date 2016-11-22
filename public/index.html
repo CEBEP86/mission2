@@ -8,12 +8,26 @@
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css" />
 <body>
-<h2>Задачи</h2>
-<form>
+<tr>
+    <td class="top" colspan="2"><h2>Задачи</h2></td>
+</tr>
+<tr>
+    <td class="news">
 
-    <textarea id="text"></textarea>
-    <input type="button" id="b1" value="save" onclick="save();" class="btn" class="btn-default">
-    <input type="button" id="b1" value="load" onclick="load();" class="btn" class="btn-default">
+        <input type="button" id="b1" value="save" onclick="save();" class="btn" class="btn-default">
+        <input type="button" id="b1" value="load" onclick="load();" class="btn" class="btn-default">
+
+    </td>
+    <td class="text">
+        <textarea id="text"></textarea>
+        <textarea id="text"></textarea>
+    </td>
+</tr>
+
+
+
+
+<form>
     <div id="results">вывод</div>
 
 </form>
