@@ -9,8 +9,8 @@
             elems[i-1]=div.value;
         }
                var Customer = {
-                 'text': elems,
-
+       //          'text': elems,
+                   'text':elems[0],
 
              };
         $.ajax({
@@ -41,7 +41,9 @@
             url: 'http://localhost:8080/load',
             data: JSON.stringify(Customer),
             success: function (data) {
-                $('#text').val(data.text)
+
+                $('#note1').val(data.text)
+
             },
             error: function (xhr, str) {
                 alert('�������� ������: ' + xhr.responseCode);
