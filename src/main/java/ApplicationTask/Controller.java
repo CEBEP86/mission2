@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Array;
 
 
 @RestController
@@ -23,12 +24,15 @@ public class Controller {
       }  */
 ////////////////////////////////
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
-    public Customer save(@RequestBody Customer text) {
-''
-        bd_save(text.getText());
-        Customer otvet= new Customer();
-        otvet.setText("Ok");
-        return otvet;
+    public Customer2 save(@RequestBody Customer2 text) {
+
+       // bd_save(text.getText());
+        //Customer otvet= new Customer();
+        //otvet.setText("Ok");
+    //     return otvet;
+        System.out.print(text.getText());
+        System.out.print("!!!!!!");
+        return text;
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/load") ///адрес который принимает запросы
