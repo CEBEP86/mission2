@@ -24,7 +24,7 @@ public class Controller {
 ////////////////////////////////
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
     public Customer save(@RequestBody Customer text) {
-
+''
         bd_save(text.getText());
         Customer otvet= new Customer();
         otvet.setText("Ok");
