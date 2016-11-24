@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@org.springframework.stereotype.Controller
+
 @RestController
-public class Controller implements TaskDaoJdbcTemplate.TaskDao{
+public class Controller {
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    TaskDaoJdbcTemplate TaskDao;///попробуй потом просто с таскдао
+
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     /*
@@ -30,7 +31,7 @@ public class Controller implements TaskDaoJdbcTemplate.TaskDao{
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/load") ///адрес который принимает запросы
-    public Task b(@RequestBody Task text) {
+    public Task load(@RequestBody Task text) {
 
         System.out.println(bd_load());
         Task otvet= new Task();

@@ -15,7 +15,6 @@ public class Application implements CommandLineRunner {
 
     public static void main(String args[]) throws SQLException {
         SpringApplication.run(Application.class, args);
-
     }
 
     @SuppressWarnings("SpringJavaAutowiringInspection")

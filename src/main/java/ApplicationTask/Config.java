@@ -10,8 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-    TaskDaoJdbcTemplate.TaskDao taskDao() {
-        return new TaskDaoJdbcTemplate.TaskDao ();
-    }
+    TaskDao taskDao() {
+        return new TaskDao ();    }
 }
 

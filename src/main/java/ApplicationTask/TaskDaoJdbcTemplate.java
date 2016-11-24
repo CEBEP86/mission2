@@ -16,19 +16,15 @@ import java.util.*;
  * Created by Администратор on 23.11.2016.
  */
 @Component
+
 public  class TaskDaoJdbcTemplate {
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
+
+
     public  String s;
 
-    @Autowired
-    public interface TaskDao {
-        public Task create(Task task);
-        public Task read(Integer id);
-        public List<Task> readAll();
-        public Task update(Task task);
-        public void delete(Integer id);
-    }
+
 
     public  String  bd_load()
     {
