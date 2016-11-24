@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.Array;
 import java.util.*;
 
-/**
- * Created by Администратор on 23.11.2016.
- */
+
 @Component
 
 public  class TaskDaoJdbcTemplate {
