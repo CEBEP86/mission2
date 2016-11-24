@@ -1,9 +1,9 @@
 package ApplicationTask;
 
-public class Customer {
+public class Task {
 
-    public Customer(String text){this.text=text;}
-    public Customer(){}
+    public Task(String text){this.text=text;}
+    public Task(){}
 
     @Override
     public String toString() {
