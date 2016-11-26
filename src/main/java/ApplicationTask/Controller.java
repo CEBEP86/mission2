@@ -26,8 +26,6 @@ public class Controller {
 ////////////////////////////////
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
     public String save(@RequestBody List<Task> text) {
-        System.out.println("Пришла строка ща выведу:");
-        System.out.println(text.get(1).getText());
         for(Task a:text)
         TaskDao.save(a);
 
