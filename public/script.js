@@ -32,22 +32,35 @@
         });
     }
 
-
     function load() {
-        var Customer = {
-            'text': $('#text').val(),
-        };
+
         var msg = $('#text').serialize();
         $.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             type: 'POST',
             url: 'http://localhost:8080/load',
-            data: JSON.stringify(Customer),
+            data: JSON.stringify("load"),
             success: function (data) {
 
-                $('#note1').val(data.text)
+                var div;
+                var customers = [];
+                ///уровнять колличество окон
+                for (var i = 0;data.length != notes;  i++) {
+                    if (data.length > notes) add();
+                    if (data.length < notes) del();
+                }
 
+                ///вставить результат
+                for (var i = 0; i < data.length;  i++) {
+                    div = document.getElementById('note' + (i+1));
+                    var customer = {
+                        'id': i,
+                        'text': div.value
+                    };
+                    customer = data[i];
+                    div.value = customer['text'];
+                }
             },
             error: function (xhr, str) {
                 alert('�������� ������: ' + xhr.responseCode);

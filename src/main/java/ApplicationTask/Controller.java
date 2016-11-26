@@ -33,14 +33,11 @@ public class Controller {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/load") ///адрес который принимает запросы
-    public Task load(@RequestBody Task text) {
+    public List<Task> load(@RequestBody String text) {
 
        System.out.println( TaskDao.load());
-        Task otvet= new Task();
-        otvet.setText(TaskDao.load());
-        return otvet;
-        //new Customer("Ok");
-    }
+        return TaskDao.load();
+        }
 
 
 

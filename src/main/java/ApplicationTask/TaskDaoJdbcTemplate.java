@@ -33,11 +33,11 @@ public  class TaskDaoJdbcTemplate implements TaskDao {
 
     ;
 
-    public String load() {
-        List<Task> load_task =
+    public List<Task>  load() {
+        /*List<Task> load_task =
                 jdbcTemplate.query("SELECT task_text FROM TASK", (rs, rowNum) ->
-                        //  new Task(rs.getString("task_text"))).
-                        //  forEach(task -> ));
+                          new Task(rs.getString("id"),rs.getString("task_text"))).
+                          forEach(task ->  ));
 
 
                 {
@@ -51,6 +51,19 @@ public  class TaskDaoJdbcTemplate implements TaskDao {
 
         }
         return stroka;
+*/
+        final String sql = "select * from TASK";
+        final List<Task> tasks = new ArrayList<Task>();
+        final List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+
+        for (Map<String, Object> row : rows) {
+            Task task = new Task();
+            task.setId((Integer) row.get("id"));
+            task.setText((String) row.get("task_text"));
+            tasks.add(task);
+        }
+        return tasks;
+
     }
 
 

@@ -2,7 +2,7 @@ package ApplicationTask;
 
 public class Task {
 
-    //public Task(int id, String text){this.id=id; this.text=text;}
+    public Task(int id, String text){this.id=id; this.text=text;}
     public Task(){}
 
     @Override

@@ -23,7 +23,7 @@ public interface TaskDao{
 
         public Task add(Task task);
 
-        public String load();
+        public List<Task>  load();
 
         public void save(Task task);
 
