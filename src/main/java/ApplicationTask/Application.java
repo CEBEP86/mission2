@@ -18,8 +18,6 @@ public class Application implements CommandLineRunner {
     }
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
-    @Autowired
-    JdbcTemplate jdbcTemplate;
 
     @Override
     public void run(String... strings) throws Exception {

@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Array;
+import java.util.List;
+
 
 @RestController
 public class Controller {
@@ -22,20 +25,21 @@ public class Controller {
       }  */
 ////////////////////////////////
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
-    public Task  save(@RequestBody Task text) {
+    public String save(@RequestBody List<Task> text) {
+        System.out.println("Пришла строка ща выведу:");
+        System.out.println(text.get(1).getText());
+        for(Task a:text)
+        TaskDao.save(a);
 
-        bd_save(text.getText());
-        Task otvet= new Task();
-        otvet.setText("Ok");
-         return otvet;
+         return "Ok";
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/load") ///адрес который принимает запросы
     public Task load(@RequestBody Task text) {
 
-        System.out.println(bd_load());
+       System.out.println( TaskDao.load());
         Task otvet= new Task();
-        otvet.setText(bd_load());
+        otvet.setText(TaskDao.load());
         return otvet;
         //new Customer("Ok");
     }

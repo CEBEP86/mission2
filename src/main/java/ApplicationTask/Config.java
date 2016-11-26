@@ -11,6 +11,6 @@ public class Config {
 
     @Bean
     TaskDao taskDao() {
-        return new TaskDao ();    }
+        return new TaskDaoJdbcTemplate();    }
 }
 
