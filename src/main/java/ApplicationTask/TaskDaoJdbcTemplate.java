@@ -26,32 +26,14 @@ public  class TaskDaoJdbcTemplate implements TaskDao {
         return new Task();
     }
 
-    ;
+
 
     public void delete(Integer id) {
     }
 
-    ;
+
 
     public List<Task>  load() {
-        /*List<Task> load_task =
-                jdbcTemplate.query("SELECT task_text FROM TASK", (rs, rowNum) ->
-                          new Task(rs.getString("id"),rs.getString("task_text"))).
-                          forEach(task ->  ));
-
-
-                {
-                    Task task = new Task();
-                    task.setText(rs.getString("task_text"));
-                    return task;
-                });
-        String stroka = "";
-        for (Task name : load_task) {
-            stroka += name.toString();
-
-        }
-        return stroka;
-*/
         final String sql = "select * from TASK";
         final List<Task> tasks = new ArrayList<Task>();
         final List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
