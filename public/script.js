@@ -1,12 +1,16 @@
 {
     var notes=2;
+    var div={};
     function save() {
         ////найти обьекты-поместить в массив их значения-передать
-        var div;
         var customers = [];
 
         for (var i = 1; i < notes + 1; i++) {
+            div = null;
+
             div = document.getElementById('note' + i);
+            if (div.value != null)
+                if(div!= null)
             var customer={
                 'id':i,
                 'text':div.value
@@ -43,8 +47,7 @@
             data: JSON.stringify("load"),
             success: function (data) {
 
-                var div;
-                var customers = [];
+                div = null; var customers = [];
                 ///уровнять колличество окон
                 for (var i = 0;data.length != notes;  i++) {
                     if (data.length > notes) add();
@@ -81,12 +84,13 @@
     }
 
     function del() {
-        var div = document.getElementById('list')
+        div = null;
+        div = document.getElementById('list')
         var elems = div.getElementsByTagName('*')
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
         var elems = div.getElementsByTagName('*')
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
-
+        notes--;
     }
 }
 
