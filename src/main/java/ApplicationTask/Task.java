@@ -1,8 +1,15 @@
 package ApplicationTask;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TASK")
 
 public class Task {
 
-    public Task(int id, String text){this.id=id; this.text=text;}
+    public Task(Integer id, String text){this.id=id; this.text=text;}
     public Task(){}
 
     @Override
@@ -11,8 +18,11 @@ public class Task {
                 "%s","%s", id,
                 text);
     }
+    @Id
+    @Column(name="id")
 
-    private int id;
+   private Integer id;
+    @Column(name="task_text")
     private String text;
 
 
@@ -26,6 +36,6 @@ public class Task {
 
     public int getId() {return id;}
 
-    public void setId(int id) {this.id = id;}
+    public void setId(Integer id) {this.id = id;}
 }
 
