@@ -59,7 +59,6 @@ public class Config  {
         factory.setPackagesToScan("io.sever86.tasks");
         factory.setDataSource(dataSource());
         factory.afterPropertiesSet();
-
         return factory.getObject();
     }
 
