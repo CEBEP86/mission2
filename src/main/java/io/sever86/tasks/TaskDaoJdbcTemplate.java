@@ -1,25 +1,21 @@
-package ApplicationTask;
-
-import ApplicationTask.Task;
+package io.sever86.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.SystemEnvironmentPropertySource;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.sql.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
-@Component
+//@Component
 
 public  class TaskDaoJdbcTemplate implements TaskDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+
+
     public String s = "";
 
     public Task add(Task task) {

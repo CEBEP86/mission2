@@ -1,12 +1,9 @@
-package ApplicationTask;
+package io.sever86.tasks;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
-    @Autowired
-    TaskRepository taskRepository;
 
 
 }

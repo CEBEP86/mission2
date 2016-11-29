@@ -1,4 +1,4 @@
-package ApplicationTask;
+package io.sever86.tasks;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
