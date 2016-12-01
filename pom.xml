@@ -79,15 +79,6 @@
         </plugins>
     </build>
 
-    <build>
-        <resources>
-            <resource>
-                <includes>
-                    <include>application.properties</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
+
 
 </project>
