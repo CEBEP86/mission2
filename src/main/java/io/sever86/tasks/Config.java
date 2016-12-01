@@ -2,6 +2,7 @@ package io.sever86.tasks;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -11,9 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
 
 /**
  * Created by Администратор on 24.11.2016.
@@ -21,32 +19,30 @@ import java.util.Properties;
 @Configuration
 @EnableJpaRepositories(basePackages = "io.sever86.tasks")
 @EnableTransactionManagement
+
 public class Config  {
+    @Value("${spring.datasource.url}")
+    String url;
+    @Value("${spring.datasource.username}")
+    String user;
+    @Value("${spring.datasource.password}")
+    String pass;
+    @Value("${spring.datasource.driver-class-name}")
+    String draive;
+
+
 
     @Bean
-    public DataSource dataSource() {
-        final HikariConfig config = new HikariConfig();
-        Properties property = new Properties();
-        try {
-            FileInputStream fis;
-            fis = new FileInputStream("src/main/resources/application.properties");
-            property.load(fis);
+        public DataSource dataSource()
+        {
+            final HikariConfig config = new HikariConfig();
+            config.setJdbcUrl(url);
+            config.setDriverClassName(draive);
+            config.setUsername(user);
+            config.setPassword(pass);
 
-            String host = property.getProperty("spring.datasource.url");
-            String login = property.getProperty("spring.datasource.username");
-            String password = property.getProperty("spring.datasource.password");
-            String driver = property.getProperty("spring.datasource.driver-class-name");
-
-            config.setJdbcUrl(host);
-            config.setDriverClassName(driver);
-            config.setUsername(login);
-            config.setPassword(password);
-        }catch (IOException e) {
-            System.err.println("ОШИБКА: Файл свойств отсуствует!");
+            return new HikariDataSource(config);
         }
-
-        return new HikariDataSource(config);
-    }
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
