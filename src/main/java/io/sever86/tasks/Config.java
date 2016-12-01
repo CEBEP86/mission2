@@ -13,14 +13,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-/**
- * Created by Администратор on 24.11.2016.
- */
 @Configuration
 @EnableJpaRepositories(basePackages = "io.sever86.tasks")
 @EnableTransactionManagement
 
-public class Config  {
+public class Config {
     @Value("${spring.datasource.url}")
     String url;
     @Value("${spring.datasource.username}")
@@ -31,18 +28,16 @@ public class Config  {
     String draive;
 
 
-
     @Bean
-        public DataSource dataSource()
-        {
-            final HikariConfig config = new HikariConfig();
-            config.setJdbcUrl(url);
-            config.setDriverClassName(draive);
-            config.setUsername(user);
-            config.setPassword(pass);
+    public DataSource dataSource() {
+        final HikariConfig config = new HikariConfig();
+        config.setJdbcUrl(url);
+        config.setDriverClassName(draive);
+        config.setUsername(user);
+        config.setPassword(pass);
 
-            return new HikariDataSource(config);
-        }
+        return new HikariDataSource(config);
+    }
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
