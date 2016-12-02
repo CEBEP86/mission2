@@ -9,7 +9,7 @@
 
 
     <changeSet author="John" id="0">
-        <createTable tableName="APP_USER">
+        <createTable tableName="TASK">
             <column autoIncrement="true" name="id" type="INT"/>
             <column name="task_text" type="VARCHAR(255)"/>
 

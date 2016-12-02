@@ -1,5 +1,6 @@
-package io.sever86.tasks;
+package io.sever86.dao;
 
+import io.sever86.tasks.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 

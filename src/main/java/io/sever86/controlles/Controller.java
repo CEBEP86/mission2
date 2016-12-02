@@ -1,5 +1,7 @@
-package io.sever86.tasks;
+package io.sever86.controlles;
 
+import io.sever86.domain.Application;
+import io.sever86.tasks.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import java.util.List;
 @RestController
 public class Controller {
     @Autowired
-    TaskDao TaskDao;///попробуй потом просто с таскдао
+    io.sever86.dao.TaskDao TaskDao;///попробуй потом просто с таскдао
 
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -22,6 +24,7 @@ public class Controller {
 
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
     public String save(@RequestBody List<Task> text) {
+        System.out.println("AVAVVA");
         for (Task a : text)
             TaskDao.save(a);
 
@@ -30,6 +33,7 @@ public class Controller {
 
     @RequestMapping(method = RequestMethod.POST, path = "/load") ///адрес который принимает запросы
     public List<Task> load(@RequestBody String text) {
+        System.out.println("AVAVVA");
 
         System.out.println(TaskDao.load());
         return TaskDao.load();

@@ -1,4 +1,4 @@
-package io.sever86.tasks;
+package io.sever86.domain;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
