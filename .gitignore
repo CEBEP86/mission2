@@ -1,4 +1,4 @@
 target
 *.iml
 .idea
-/src/main/resources/config/appliccation.yaml
+/src/main/resources/config/application.yaml

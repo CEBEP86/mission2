@@ -31,10 +31,10 @@ public class Config {
     @Bean
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
+        liquibase.setChangeLog("classpath:liquibase/master.xml");
         liquibase.setDataSource(dataSource());
         return liquibase;
-    }
+        }
 
     @Bean
     public DataSource dataSource() {

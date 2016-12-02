@@ -63,12 +63,7 @@
             <artifactId>spring-boot</artifactId>
             <version>1.4.2.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>1.4</version>
-        </dependency>
-        <dependency>
+            <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>3.5.3</version>
