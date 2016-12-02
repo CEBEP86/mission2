@@ -8,9 +8,9 @@
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet author="John" id="0">
-        <createTable tableName="APP_USER">
-            <column autoIncrement="true" name="id" type="INT"/>
+    <changeSet author="ii" id="2">
+        <createTable tableName="TASK">
+            <column name="id" type="INT"/>
             <column name="task_text" type="VARCHAR(255)"/>
 
         </createTable>
