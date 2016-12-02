@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 public class Controller {
     @Autowired
-    TaskDao TaskDao;///попробуй потом просто с таскдао
+    TaskDao TaskDao;
 
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);

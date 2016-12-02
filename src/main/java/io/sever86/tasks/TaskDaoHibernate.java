@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * Created by Администратор on 26.11.2016.
  */
-public class TaskDaoHibernate implements TaskDao{
-    ///сделать jpa   В спринг-конфигурации(@Configuration) подмени старую jdbc-реализацию на jpa.
+public class TaskDaoHibernate implements TaskDao {
     @Autowired
     TaskRepository taskRepository;
 
