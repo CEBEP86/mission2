@@ -1,4 +1,4 @@
-package io.sever86.domain;
+package io.sever86;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

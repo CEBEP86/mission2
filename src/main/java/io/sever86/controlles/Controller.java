@@ -1,6 +1,6 @@
 package io.sever86.controlles;
 
-import io.sever86.domain.Application;
+import io.sever86.Application;
 import io.sever86.tasks.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
