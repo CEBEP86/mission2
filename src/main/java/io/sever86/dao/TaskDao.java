@@ -1,4 +1,6 @@
-package io.sever86.tasks;
+package io.sever86.dao;
+
+import io.sever86.domain.Task;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package io.sever86.tasks;
+package io.sever86.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

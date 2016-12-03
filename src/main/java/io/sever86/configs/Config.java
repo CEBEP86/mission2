@@ -1,7 +1,9 @@
-package io.sever86.tasks;
+package io.sever86.configs;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import io.sever86.dao.TaskDao;
+import io.sever86.dao.TaskDaoHibernate;
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +17,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "io.sever86.tasks")
+@EnableJpaRepositories(basePackages = "io.sever86.repositories")
 @EnableTransactionManagement
 
 public class Config {

@@ -1,5 +1,7 @@
-package io.sever86.tasks;
+package io.sever86.dao;
 
+import io.sever86.repositories.TaskRepository;
+import io.sever86.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

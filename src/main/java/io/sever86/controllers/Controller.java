@@ -1,5 +1,7 @@
-package io.sever86.tasks;
+package io.sever86.controllers;
 
+import io.sever86.Application;
+import io.sever86.domain.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import java.util.List;
 @RestController
 public class Controller {
     @Autowired
-    TaskDao TaskDao;
+    io.sever86.dao.TaskDao TaskDao;
 
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
