@@ -5,6 +5,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import io.sever86.dao.TaskDao;
 import io.sever86.dao.TaskDaoHibernate;
 import liquibase.integration.spring.SpringLiquibase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +23,9 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 
 public class Config {
+
+    private final Logger log = LoggerFactory.getLogger(Config.class);
+
     @Value("${spring.datasource.url}")
     String url;
     @Value("${spring.datasource.username}")
