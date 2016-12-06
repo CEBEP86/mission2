@@ -32,7 +32,7 @@ public class TaskController {
     @RequestMapping(method = RequestMethod.GET,value = "/load") ///адрес который принимает запросы
     @ResponseBody
     public List<Task> load() {
-        log.warn("Yo niger mother fucker:");
+        log.warn("RESPONSE!!!!!!!!!!!!!!!!!!!!!!!!");
         return taskDao.load();
     }
 
