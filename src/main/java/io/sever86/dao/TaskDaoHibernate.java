@@ -16,6 +16,7 @@ public class TaskDaoHibernate implements TaskDao {
         return taskRepository.save(task);
     }
 
+
     @Override
     public List<Task> load() {
         return taskRepository.findAll();
