@@ -34,7 +34,7 @@ public class Controller {
 
     @RequestMapping(method = RequestMethod.POST, path = "/load") ///адрес который принимает запросы
     public List<Task> load(@RequestBody String text) {
-        log.warn("taskDao.load():",taskDao.load());
+        log.warn("responce!!!!!!!!!!!!!!");
         return taskDao.load();
     }
 
