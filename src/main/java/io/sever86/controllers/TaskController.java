@@ -6,6 +6,7 @@ import io.sever86.domain.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class TaskController {
     }
 
 
-
+@Transactional
     @RequestMapping(method = RequestMethod.GET,value = "/load") ///адрес который принимает запросы
     @ResponseBody
     public List<Task> load() {
