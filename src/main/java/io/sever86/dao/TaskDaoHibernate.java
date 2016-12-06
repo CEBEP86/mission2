@@ -1,14 +1,11 @@
 package io.sever86.dao;
 
-import io.sever86.repositories.TaskRepository;
 import io.sever86.domain.Task;
+import io.sever86.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-/**
- * Created by Администратор on 26.11.2016.
- */
 public class TaskDaoHibernate implements TaskDao {
     @Autowired
     TaskRepository taskRepository;

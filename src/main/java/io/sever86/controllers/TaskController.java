@@ -18,21 +18,21 @@ public class TaskController {
 
 
     private static final Logger log = LoggerFactory.getLogger(TaskController.class);
-    //org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Controller.class);
+
 
 
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
+
     public String save(@RequestBody List<Task> text) {
         for (Task a : text)
             taskDao.save(a);
 
         return "Ok";
     }
-
     @RequestMapping(method = RequestMethod.GET,value = "/load") ///адрес который принимает запросы
     @ResponseBody
     public List<Task> load() {
-        log.warn("taskDao.load():",taskDao.load());
+        log.warn("Yo niger mother fucker:");
         return taskDao.load();
     }
 
