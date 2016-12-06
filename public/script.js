@@ -6,7 +6,6 @@
         var customers = [];
 
         for (var i = 1; i < notes + 1; i++) {
-            div = null;
 
             div = document.getElementById('note' + i);
             if (div.value != null)
@@ -38,13 +37,11 @@
 
     function load() {
 
-        var msg = $('#text').serialize();
         $.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             type: 'GET',
             url: 'http://localhost:8080/load',
-            data: JSON.stringify("load"),
             success: function (data) {
 
                 div = null; var customers = [];
@@ -73,9 +70,9 @@
     }
 
     function add() {
-        var l = document.createElement('li')
-        l.id = "l"
-        var o = document.createElement('textarea')
+        var l = document.createElement('li');
+        l.id = "l";
+        var o = document.createElement('textarea');
         notes++;
         o.id = 'note' +notes;
         o.tagName ="lili";
@@ -85,10 +82,10 @@
 
     function del() {
         div = null;
-        div = document.getElementById('list')
-        var elems = div.getElementsByTagName('*')
+        div = document.getElementById('list');
+        var elems = div.getElementsByTagName('*');
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
-        var elems = div.getElementsByTagName('*')
+        var elems = div.getElementsByTagName('*');
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
         notes--;
     }
