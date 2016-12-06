@@ -62,7 +62,7 @@ public class Config {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("io.sever86");
+        factory.setPackagesToScan("io.sever86.domain");
         factory.setDataSource(dataSource());
         factory.afterPropertiesSet();
         return factory.getObject();
