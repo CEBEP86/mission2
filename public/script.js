@@ -42,7 +42,7 @@
         $.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            type: 'POST',
+            type: 'GET',
             url: 'http://localhost:8080/load',
             data: JSON.stringify("load"),
             success: function (data) {
