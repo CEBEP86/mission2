@@ -26,14 +26,16 @@
             type: 'POST',
             url: 'http://localhost:8080/save',
             data: JSON.stringify(customers),
+            dataType: 'text',
             success: function (data) {
-                $('#results').html(data.text);
-            },
-            error: function (xhr) {
-                alert('�������� ������: ' + xhr.responseCode);
+               $('#results').text(data);
+                },
+            error: function (data) {
+                alert('FILED!!!  TEXT RESPONSE: ' + data);
             }
         });
     }
+
 
     function load() {
 

@@ -22,13 +22,14 @@ public class TaskController {
 
 
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
-
     public String save(@RequestBody List<Task> text) {
         for (Task a : text)
             taskDao.save(a);
-
-        return "Ok";
+        return "ok";
     }
+
+
+
     @RequestMapping(method = RequestMethod.GET,value = "/load") ///адрес который принимает запросы
     @ResponseBody
     public List<Task> load() {
