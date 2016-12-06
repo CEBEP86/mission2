@@ -32,8 +32,9 @@ public class TaskController {
     @RequestMapping(method = RequestMethod.GET,value = "/load") ///адрес который принимает запросы
     @ResponseBody
     public List<Task> load() {
-        log.warn("RESPONSE!!!!!!!!!!!!!!!!!!!!!!!!");
-        return taskDao.load();
+        List<Task> result = taskDao.load();
+        log.info("Loaded tasks: {}", result);
+        return result;
     }
 
 

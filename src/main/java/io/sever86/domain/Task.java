@@ -21,7 +21,7 @@ public class Task {
     @Override
     public String toString() {
         return String.format(
-                "%s", "%s", id,
+                "%s %s", id,
                 text);
     }
 

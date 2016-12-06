@@ -29,7 +29,7 @@
             success: function (data) {
                 $('#results').html(data.text);
             },
-            error: function (xhr, str) {
+            error: function (xhr) {
                 alert('�������� ������: ' + xhr.responseCode);
             }
         });
@@ -44,7 +44,6 @@
             url: 'http://localhost:8080/load',
             success: function (data) {
 
-                div = null; var customers = [];
                 ///уровнять колличество окон
                 for (var i = 0;data.length != notes;  i++) {
                     if (data.length > notes) add();
@@ -62,7 +61,7 @@
                     div.value = customer['text'];
                 }
             },
-            error: function (xhr, str) {
+            error: function (xhr) {
                 alert('�������� ������: ' + xhr.responseCode);
             }
         });
@@ -81,7 +80,6 @@
     }
 
     function del() {
-        div = null;
         div = document.getElementById('list');
         var elems = div.getElementsByTagName('*');
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
