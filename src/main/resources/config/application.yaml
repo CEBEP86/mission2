@@ -1,8 +1,0 @@
-spring:
-  datasource:
-    url: "jdbc:postgresql://localhost:5433/TaskApplication"
-    username: "ii"
-    password: "ii"
-    driver-class-name: "org.postgresql.Driver"
-  data:
-    jpa.repositories.enabled: true
