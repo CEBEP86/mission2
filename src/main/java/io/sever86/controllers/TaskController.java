@@ -23,9 +23,9 @@ public class TaskController {
 
 
     @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
-    public String save(@RequestBody List<Task> text) {
-        for (Task a : text)
-            taskDao.save(a);
+    public String save(@RequestBody List<Task> input_text) {
+        for (Task tasks : input_text)
+            taskDao.save(tasks);
         return "ok";
     }
 
