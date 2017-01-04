@@ -8,26 +8,21 @@
     <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css" />
 <body>
 <tr>
-    <td class="top" colspan="2"><h2>Задачи</h2></td>
+    <td class="top" colspan="2"><h2>TASK LIST</h2></td>
 </tr>
 <tr>
-    <td class="news">
+    <td id="listik">
+        <ol id="listik">
 
-        <input type="button" id="b1" value="save" onclick="save();" class="btn" class="btn-default">
-        <input type="button" id="b1" value="load" onclick="load();" class="btn" class="btn-default">
-        <input type="button" id="b1" value="add" onclick="add();" class="btn" class="btn-default">
-        <input type="button" id="b1" value="delete" onclick="del();" class="btn" class="btn-default">
-
+        <input type="button" id="b1" value="load" onclick="findAllTasks();" class="btn" class="btn-default">
+        </ol>
     </td>
     <td>
-        <ol id="list">
-        <li id="l"> <textarea id="note1">Yo</textarea></li>
-        <li id="l"> <textarea id="note2" >niger</textarea></li>
-    </ol>
 
 
 
 
+        <input type="button" id="b1" value="New" onclick="goCreateTask();" class="btn" class="btn-default">
 
     </td>
 </tr>
@@ -36,7 +31,6 @@
 
 
 <form>
-    <div id='results' name="results">вывод</div>
 
 </form>
 </body>

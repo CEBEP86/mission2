@@ -9,7 +9,8 @@ import java.util.List;
 /**
  * Created by Администратор on 24.11.2016.
  */
-public interface TaskDao {
+public interface 
+TaskDao {
 
     public void addTask(Task task);
     public void addExecutors(Task task,Executors taskExecutors );

@@ -1,5 +1,5 @@
 {
-    var notes=2;
+    var notes=0;
     var div={};
     function save() {
         ////найти обьекты-поместить в массив их значения-передать
@@ -36,6 +36,38 @@
         });
     }
 
+    function findAllTasks() {
+
+        $.ajax({
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            type: 'GET',
+            url: 'http://localhost:8080/findAllTasks',
+            success: function (data) {
+
+                ///уровнять колличество окон
+                for (var i = 0;data.length != notes;  i++) {
+                    if (data.length > notes) findAllTaskAdd();
+                    if (data.length < notes) findAllTaskDel();
+                }
+
+                ///вставить результат
+                for (var i = 0; i < data.length;  i++) {
+                    div = document.getElementById('note' + (i+1));
+                    var customer = {
+                        'id': i,
+                        'taskName': div.value
+                    };
+                    customer = data[i];
+                    div.textContent = '  '+customer['taskName']+'  ';
+                }
+            },
+            error: function (xhr) {
+                alert('�������� ������: ' + xhr.responseCode);
+            }
+        });
+
+    }
 
     function load() {
 
@@ -48,8 +80,8 @@
 
                 ///уровнять колличество окон
                 for (var i = 0;data.length != notes;  i++) {
-                    if (data.length > notes) add();
-                    if (data.length < notes) del();
+                    if (data.length > notes) findAllTaskAdd();
+                    if (data.length < notes) findAllTaskDel();
                 }
 
                 ///вставить результат
@@ -70,24 +102,52 @@
 
     }
 
-    function add() {
-        var l = document.createElement('li');
-        l.id = "l";
-        var o = document.createElement('textarea');
-        notes++;
-        o.id = 'note' +notes;
-        o.tagName ="lili";
-            list.appendChild(l);
-        l.appendChild(o);
+
+    function goCreateTask() {
+        window.location.href="../create.html"
     }
 
-    function del() {
-        div = document.getElementById('list');
+    function goTaskList() {
+        window.location.href="http://localhost:8080/"
+    }
+
+
+    function findAllTaskAdd() {
+        var l = document.createElement('p');
+        l.id="p1";
+        var l1 = document.createElement('input');
+        l1.type = "checkbox";
+        notes++;
+       // l1.id =  'note' +notes;
+        l1.tagName ="lili";
+        var l2 = document.createElement('STRONG');
+     //   l2.id=l1.id;
+        l2.id =  'note' +notes;
+        l2.textContent=' '+l2.id.toString()+' ';
+        var l3 = document.createElement('input');
+        l3.type="button";
+      //  l3.id =l1.id;
+        l3.value="delete";
+        l3.onclick="del();";
+        l3.class="btn";
+        l3.class="btn-default";
+        var list = document.getElementById('listik');
+        l.appendChild(l1);
+        l.appendChild(l2);
+        l.appendChild(l3);
+        list.appendChild(l);
+
+    }
+
+    function findAllTaskDel() {
+        div = document.getElementById('listik');
         var elems = div.getElementsByTagName('*');
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
-        var elems = div.getElementsByTagName('*');
+        elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
+        elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
         notes--;
+
     }
 }
 

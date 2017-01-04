@@ -83,11 +83,22 @@ public class TaskController {
         log.info("Loaded tasks: {}", i.getTaskName().toString());
     }
 
-
-
     return "ok";
     }
 
+    @Transactional
+    @RequestMapping(method = RequestMethod.GET,value = "/findAllTasks") ///адрес который принимает запросы
+    @ResponseBody
+    public List<Task> findAllTasksClient() {
+
+        log.info("Load taskLIST");
+        List<Task> result3 = taskDao.findAllTask();
+        for (Task i:  result3  ) {
+            log.info("Loaded tasks: {}", i.getTaskName().toString());
+        }
+
+        return result3;
+    }
 
 
 
