@@ -30,12 +30,13 @@ public class PersonalDaoJdbcTemplate implements PersonalDao {
         persona.setSecondName(rs.getString("last_name"));
         persona.setLastName(rs.getString("second_name"));
         persona.setTax(rs.getBigDecimal("tax"));
+        persona.setEabled(rs.getInt("enabled"));
         return persona;
     };
     public void addPersonal(Persona persona){
         KeyHolder keyHolder = new GeneratedKeyHolder(); //ID generator for BD
         PreparedStatementCreator preparedStatementCreator = connection -> {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO personal(first_name,last_name,second_name,date_birth,tax,login,password) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO personal(first_name,last_name,second_name,date_birth,tax,login,password,enabled) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, persona.getFirstName());
             ps.setString(2, persona.getLastName());
             ps.setString(3, persona.getSecondName());
@@ -43,12 +44,13 @@ public class PersonalDaoJdbcTemplate implements PersonalDao {
             ps.setBigDecimal(5, persona.getTax());
             ps.setString(6, persona.getLogin());
             ps.setString(7, persona.getPassword());
+            ps.setInt(8, persona.getEabled());
             return ps;
         };
         jdbcTemplate.update(preparedStatementCreator, keyHolder);
     }
     public List<Persona> loadPersonalInf() {
-        return jdbcTemplate.query("SELECT id, first_name,last_name,second_name,tax FROM personal", rowMapperPersona);
+        return jdbcTemplate.query("SELECT id, first_name,last_name,second_name,tax,enabled FROM personal", rowMapperPersona);
     }
 
 }

@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class Persona {
 
     public Persona(Integer id, String first_name, String last_name,
-                   String second_name, Timestamp date_birth, BigDecimal tax, String login, String password) {
+                   String second_name, Timestamp date_birth, BigDecimal tax, String login, String password, Integer enabled ) {
         this.id = id;
         this.firstName = first_name;
         this.lastName = last_name;
@@ -15,6 +15,8 @@ public class Persona {
         this.tax = tax;
         this.login = login;
         this.password = password;
+        this.enabled = enabled;
+
     }
 
     public Persona() {
@@ -23,7 +25,7 @@ public class Persona {
     @Override
     public String toString() {
         return String.format(
-                "%s %s %s %s %s %s %s %s", id, firstName, lastName, secondName, dateBirth, tax, login, password);
+                "%s %s %s %s %s %s %s %s", id, firstName, lastName, secondName, dateBirth, tax, login, password, enabled);
     }
 
 
@@ -35,7 +37,7 @@ public class Persona {
     private BigDecimal tax;
     private String login;
     private String password;
-
+    private Integer enabled;
 
     public Integer getId() {
         return id;
@@ -43,6 +45,14 @@ public class Persona {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getEabled() {
+        return enabled;
+    }
+
+    public void setEabled(Integer enabled) {
+        this.enabled = enabled;
     }
 
     public String getFirstName() {

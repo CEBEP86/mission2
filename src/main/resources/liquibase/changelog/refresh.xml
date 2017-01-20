@@ -25,7 +25,8 @@
 
     <changeSet id="personal" author="sever86">
         <sql><![CDATA[
-        CREATE TABLE PERSONAL (
+
+  CREATE TABLE PERSONAL (
 
         id  SERIAL   NOT NULL PRIMARY KEY,
         first_name text,
@@ -34,7 +35,8 @@
         date_birth timestamp with time zone,
         tax decimal,
         login text,
-        password text
+        password text,
+        enabled integer NOT NULL DEFAULT 1
         );
 ]]></sql>
 
