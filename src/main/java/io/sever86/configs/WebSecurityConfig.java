@@ -25,7 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .logout().logoutSuccessUrl("/login?logout")
+
                 .permitAll();
+        http
+                .csrf().disable();
+
     }
 
     @Autowired
@@ -44,5 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     .usersByUsernameQuery("select login,password,enabled from personal where login=?")
     .authoritiesByUsernameQuery("select login, first_name from personal where login=?");
 }
+
 
 }
