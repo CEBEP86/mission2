@@ -5,33 +5,24 @@
     <script src="../bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 
     <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css" />
-<body>
-<tr>
-    <td class="top" colspan="2"><h2>TASK LIST</h2></td>
+    <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css"/>
+<body onload="findAllTasks() ">
+<h2 align="center" style="color:#096699">TASK LIST</h2>
+<tr align="center">
+    <td class="top" colspan="2"></td>
 </tr>
-<tr>
-    <td id="listik">
-        <ol id="listik">
+<tr align="center">
+    <td id="listik" align="center">
+        <ol id="listik" align="center">
 
-        <input type="button" id="b1" value="load" onclick="findAllTasks();" class="btn" class="btn-default">
         </ol>
     </td>
-    <td>
-
-
-
-
-        <input type="button" id="b1" value="New" onclick="goCreateTask();" class="btn" class="btn-default">
-
-    </td>
 </tr>
 
 
-
-
-<form>
-
+<form align="center">
+    <input type="button" id="b1" value="New" onclick="goCreateTask();" class="btn btn-primary">
 </form>
+
 </body>
 </html>

@@ -1,18 +1,20 @@
 package io.sever86.domain;
+
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Persona {
 
-    public Persona(Integer human_no, String first_name,String last_name,
-                   String second_name,Timestamp date_birth,float tax,String login,String password) {
-        this.humaNo = human_no;
+    public Persona(Integer id, String first_name, String last_name,
+                   String second_name, Timestamp date_birth, BigDecimal tax, String login, String password) {
+        this.id = id;
         this.firstName = first_name;
-        this.lastName =last_name;
-        this.secondName =second_name;
-        this.dateBirth =date_birth;
-        this.tax=tax;
-        this.login=login;
-        this.password=password;
+        this.lastName = last_name;
+        this.secondName = second_name;
+        this.dateBirth = date_birth;
+        this.tax = tax;
+        this.login = login;
+        this.password = password;
     }
 
     public Persona() {
@@ -21,29 +23,26 @@ public class Persona {
     @Override
     public String toString() {
         return String.format(
-               "%s %s %s %s %s %s %s %s", humaNo, firstName, lastName, secondName, dateBirth,tax,login,password );
+                "%s %s %s %s %s %s %s %s", id, firstName, lastName, secondName, dateBirth, tax, login, password);
     }
 
 
-
-
-
-    private Integer humaNo;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String secondName;
     private Timestamp dateBirth;
-    private float tax;
+    private BigDecimal tax;
     private String login;
     private String password;
 
 
-    public Integer getHuman_no() {
-        return humaNo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setHuman_no(Integer human_no) {
-        this.humaNo = human_no;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -70,19 +69,19 @@ public class Persona {
         this.secondName = secondName;
     }
 
-    public Timestamp getDate_birth() {
+    public Timestamp getDatebirth() {
         return dateBirth;
     }
 
-    public void setDate_birth(Timestamp date_birth) {
+    public void setDatebirth(Timestamp date_birth) {
         this.dateBirth = date_birth;
     }
 
-    public float getTax() {
+    public BigDecimal getTax() {
         return tax;
     }
 
-    public void setTax(float tax) {
+    public void setTax(BigDecimal tax) {
         this.tax = tax;
     }
 

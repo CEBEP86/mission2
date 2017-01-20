@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet id="tasks" author="sever86">
+
+        <sql><![CDATA[
+
+    CREATE TABLE TASKS (
+        id  SERIAL   NOT NULL PRIMARY KEY,
+        creator_id integer,
+        task_name text,
+        description text,
+        start_time timestamp with time zone,
+        finish_time timestamp with time zone,
+        responceble_id integer,
+        cost decimal(7,2) not null
+    );
+
+
+]]></sql>
+
+    </changeSet>
+
+    <changeSet id="personal" author="sever86">
+        <sql><![CDATA[
+        CREATE TABLE PERSONAL (
+
+        id  SERIAL   NOT NULL PRIMARY KEY,
+        first_name text,
+        last_name text,
+        second_name text,
+        date_birth timestamp with time zone,
+        tax decimal,
+        login text,
+        password text
+        );
+]]></sql>
+
+    </changeSet>
+
+    <changeSet id="worker_on_task" author="sever86">
+<sql><![CDATA[
+        CREATE TABLE worker_on_task (
+        id SERIAL   NOT NULL PRIMARY KEY,
+        worker_id integer,
+        task_id integer,
+        hour integer
+        );
+]]></sql>
+    </changeSet>
+
+</databaseChangeLog>

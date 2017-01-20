@@ -5,46 +5,43 @@
     <script src="../bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 
     <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css" />
-<body>
-<tr>
-    <td class="top" colspan="2"><h2>CREATE TASK LIST</h2></td>
+    <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css"/>
+<body onload="loadPersonalInformation()">
+<tr align="center">
+    <td class="top" colspan="2"><h2 style="color:#096699" align="center">CREATE TASK LIST</h2></td>
 </tr>
-<tr>
+<tr align="center">
     <td class="news">
-        <p><input maxlength="25" size="40" value="name"></p>
-        <p> <textarea id="description" >description</textarea></p>
+        <p align="center"><input maxlength="25" size="18" id="name" value="name"></p>
+        <p align="center"><textarea id="description">description</textarea></p>
 
-        <p><input maxlength="25" size="40" value="timezone"></p>
-        <p><input maxlength="25" size="40" value="start"></p>
-        <p><input maxlength="25" size="40" value="stop"></p>
-
-        <p><input maxlength="25" size="20" value="executors"><input maxlength="25" size="10" value="hours">
-            <input type="button" id="b1" value="add" onclick="addExecutors();" class="btn" class="btn-default"></p>
-        <p> None executors</p>
-        <p><input maxlength="25" size="40" value="stop"></p>
-        <p><input maxlength="25" size="40" value="cost"></p>
-
-
-
-        <input type="button" id="b1" value="ABORT" onclick="goTaskList();" class="btn" class="btn-default">
-        <input type="button" id="b1" value="CREATE" onclick="del();" class="btn" class="btn-default">
-
+        <p align="center"><input maxlength="25" size="18" id="timezone" value="timezone"></p>
+        <p align="center"><input maxlength="25" size="18" id="start" value="2017-01-07 07:34:38.602+02"></p>
+        <p align="center"><input maxlength="25" size="18" id="stop" value="2017-01-07 07:34:38.602+02"</p>
+        <p align="center"><select class="selectpicker" data-style="btn-prymary" id="responceble"> </select> responceble
+        </p>
+        <p align="center">
+            <select id="executors" class="selectpicker" data-style="btn-prymary">
+            </select><input id="hours" maxlength="25" size="5" value="hours">
+            <input type="button" id="b1" value="add" onclick="addExecutors();" class="btn btn-primary">
+        </p>
+    <td align="center" id="executorsList">
+        <ol id="executorsList1">
+            <p align="center"> None executors</p>
+        </ol>
+        <ol id="executorsList">
+        </ol>
     </td>
-    <td>
-
-
-
-
-
+    <p align="center"><input maxlength="25" size="18" value="cost" id="cost"></p>
+    <form align="center">
+        <input type="button" id="b1" value="ABORT" onclick="goTaskList();" class="btn btn-primary">
+        <input type="button" id="b1" value="CREATE" onclick="CreateTask();" class="btn btn-primary">
+    </form>
+  </td>
+   <td>
+        <div id='results1' name="results">.</div>
+        <div id='results2' name="results">.</div>
     </td>
 </tr>
-
-
-
-
-<form>
-
-</form>
 </body>
 </html>

@@ -2,8 +2,12 @@ package io.sever86.configs;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import io.sever86.dao.ExecutorDao;
+import io.sever86.dao.PersonalDao;
 import io.sever86.dao.TaskDao;
 import io.sever86.dao.TaskDaoJdbcTemplate;
+import io.sever86.dao.ExecutorDaoJdbcTemplate;
+import io.sever86.dao.PersonalDaoJdbcTemplate;
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-public class    Config {
+public class Config {
 
 
     @Value("${spring.datasource.url}")
@@ -30,7 +34,7 @@ public class    Config {
         liquibase.setChangeLog("classpath:liquibase/master.xml");
         liquibase.setDataSource(dataSource());
         return liquibase;
-        }
+    }
 
     @Bean
     public DataSource dataSource() {
@@ -47,8 +51,14 @@ public class    Config {
 
     @Bean
     TaskDao taskDao() {
-    return new TaskDaoJdbcTemplate();
+        return new TaskDaoJdbcTemplate();
     }
+    @Bean
+    ExecutorDao executorDao() {
+        return new ExecutorDaoJdbcTemplate();
+    }
+    @Bean
+    PersonalDao personalDao() {  return new PersonalDaoJdbcTemplate();    }
 }
 
 

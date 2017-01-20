@@ -1,8 +1,11 @@
 package io.sever86.controllers;
 
 
+import io.sever86.dao.ExecutorDao;
+import io.sever86.dao.PersonalDao;
 import io.sever86.dao.TaskDao;
 import io.sever86.domain.Executors;
+import io.sever86.domain.Persona;
 import io.sever86.domain.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -19,88 +23,97 @@ import java.util.List;
 public class TaskController {
     @Autowired
     TaskDao taskDao;
+    @Autowired
+    ExecutorDao executorDao;
+    @Autowired
+    PersonalDao personalDao;
+
 
 
     private static final Logger log = LoggerFactory.getLogger(TaskController.class);
+    private List<Executors> inputExecutors = new ArrayList<Executors>();
+    private Task inputTask = new Task();
+    private Integer incrementTransactionTask = 0;
+    private Integer incrementTransactionExecutors = 0;
+// GETTERS AND SETTERS NEEDED FOR TESTS
+    public void setInputTask(Task task){this.inputTask=task;}
+    public Task getInputTask(){return inputTask;}
+
+    public void setInputExecutors(List<Executors> executors){this.inputExecutors=executors;}
+    public List<Executors> getInputExecutors(){return inputExecutors;}
 
 
-
-    @RequestMapping(method = RequestMethod.POST, path = "/save") ///адрес который принимает запросы
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST, path = "/create-task")
     @ResponseBody
-
-    public String save(@RequestBody List<Task> input_text) {
-        Task task=new Task();
-        Executors taskExecutors=new Executors();
-
-        task.setTaskNo(2);
-        task.setCreatorID(2);
-        task.setTaskName("task_name");
-        task.setDescription("description");
-        Calendar calendar = Calendar.getInstance();
-        java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
-        task.setStartTime(ourJavaTimestampObject);
-        task.setFinishTime(ourJavaTimestampObject);
-        taskExecutors.setWorkerId(4);
-        taskExecutors.setHour(4);
-        task.setResponceble(5);
-        task.setCost((float) 1.33);
-
-        List<Executors> listExecutors=new ArrayList<Executors>();
-        listExecutors.add(taskExecutors);
-        listExecutors.add(taskExecutors);
-        for (Executors i:  listExecutors  ) {
-            taskDao.addExecutors(task,i);
-        }
-
-        taskDao.addTask(task);
-
-
-        log.info("tasks add complete");
-     //   List<Task> result = taskDao.findAllTask();
+    public String createTask(@RequestBody Task input_information) {
+        inputTask = input_information;
+        transaction(1);
         return "ok";
     }
 
 
-@Transactional
-    @RequestMapping(method = RequestMethod.GET,value = "/load") ///адрес который принимает запросы
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST, path = "/create-task-add-executors")
     @ResponseBody
-    //public List<Task> load() {
-    public String load() {
-    log.info("Load tasks begin");
-    Task result=new Task();
-    result = taskDao.findOneTask(1);
-    List<Executors> result2 = taskDao.findExecutors(1);
-    log.info("Loaded tasks: {}", result.getDescription().toString());
-    for (Executors i:  result2  ) {
-        log.info("Loaded tasks: {}", i.toString());
-    }
-    log.info("Load tasks complete");
-
-
-    log.info("Load taskLIST");
-    List<Task> result3 = taskDao.findAllTask();
-    for (Task i:  result3  ) {
-        log.info("Loaded tasks: {}", i.getTaskName().toString());
-    }
-
-    return "ok";
+    public String createTaskAddExecutors(@RequestBody List<Executors> input_information) {
+        inputExecutors = input_information;
+        transaction(2);
+        return "ok";
     }
 
     @Transactional
-    @RequestMapping(method = RequestMethod.GET,value = "/findAllTasks") ///адрес который принимает запросы
-    @ResponseBody
-    public List<Task> findAllTasksClient() {
-
-        log.info("Load taskLIST");
-        List<Task> result3 = taskDao.findAllTask();
-        for (Task i:  result3  ) {
-            log.info("Loaded tasks: {}", i.getTaskName().toString());
+    public void transaction(Integer a) {
+        if (a == 1) incrementTransactionTask = 1;
+        if (a == 2) incrementTransactionExecutors = 1;
+        if (incrementTransactionTask == 1) if (incrementTransactionExecutors == 1) {
+            incrementTransactionTask = 0;
+            incrementTransactionExecutors = 0;
+            Integer key_bd = 0;
+            key_bd =(Integer) taskDao.addTask(inputTask);
+            for (Executors i : inputExecutors) {
+                executorDao.addExecutors(key_bd, i);
+            }
+            inputExecutors.clear();
         }
 
-        return result3;
+    }
+
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST, path = "/read-task-executors") ///адрес который принимает запросы
+    @ResponseBody
+    public List<Executors> createTaskAddExecutors(@RequestBody Integer input_information) {
+        return executorDao.findExecutors(input_information);
     }
 
 
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST, path = "/read-task") ///адрес который принимает запросы
+    @ResponseBody
+    public Task readTask(@RequestBody Integer input_information) {
+        return taskDao.findOneTask(input_information);
+    }
 
+    @Transactional
+    @RequestMapping(method = RequestMethod.GET, value = "/find-all-tasks") ///адрес который принимает запросы
+    @ResponseBody
+    public List<Task> findAllTasksClient() {
+        return taskDao.findAllTask();
+    }
+
+    @Transactional
+    @RequestMapping(method = RequestMethod.GET, value = "/load-personal-information") ///адрес который принимает запросы
+    @ResponseBody
+    public List<Persona> loadPersonalInformation() {
+        return personalDao.loadPersonalInf();
+    }
+
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST, path = "/remove-task") ///адрес который принимает запросы
+    @ResponseBody
+    public String removeTask(@RequestBody Integer input_information) {
+            taskDao.deleteTask(input_information);
+          return "ok";
+    }
 
 }

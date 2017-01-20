@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Read</title>
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script src="../bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css"/>
+<body onload="readTask()">
+<tr align="center">
+    <td class="top" colspan="2" align="center"><h2 style="color:#096699" align="center"> TASK </h2></td>
+</tr>
+<tr align="center">
+    <td class="news" align="center">
+        <p align="center"><input align="center" maxlength="25" size="18" id="name" value="name"></p>
+        <p align="center"><textarea align="center" id="description">description</textarea></p>
+
+        <p align="center"><input align="center" maxlength="25" size="18" id="timezone" value="timezone"></p>
+        <p align="center"><input align="center" maxlength="25" size="18" id="start" value="2017-01-07 07:34:38.602+02">
+        </p>
+        <p align="center"><input align="center" maxlength="25" size="18" id="stop" value="2017-01-07 07:34:38.602+02"
+        </p>
+        <p align="center"><select align="center" id="responceble"> </select> responceble</p>
+
+
+        <p align="center">
+    <td align="center" id="executorsList">
+        <ol align="center" id="executorsList1">
+            <p align="center"> None executors</p>
+        </ol>
+        <ol align="center" id="executorsList">
+        </ol>
+    </td>
+
+    <p align="center"><input align="center" maxlength="25" size="18" value="cost" id="cost"></p>
+    <form align="center">
+
+        <input align="center" type="button" id="b1" value="ABORT" onclick="goTaskList();" class="btn"
+               class="btn-default">
+    </form>
+    </td>
+    <td>
+        <div align="center" id='results1' name="results">.</div>
+        <div align="center" id='results2' name="results">.</div>
+    </td>
+</tr>
+</body>
+</html>

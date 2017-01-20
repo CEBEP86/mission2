@@ -1,20 +1,21 @@
 package io.sever86.domain;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Task {
 
-    public Task(Integer task_no, Integer creator, String task_name, String description, Timestamp start_time,
-                Timestamp finish_time, Integer responceble, Float cost) {
-        this.taskNo = task_no;
+    public Task(Integer id, Integer creator, String task_name, String description, Timestamp start_time,
+                Timestamp finish_time, Integer responceble_id, BigDecimal cost) {
+        this.id = id;
         this.creatorID = creator;
-        this.taskName =task_name;
-        this.description=description;
-        this.startTime =start_time;
-        this.finishTime =finish_time;
-         this.responcebleID =responceble;
-        this.cost=cost;
-        }
+        this.taskName = task_name;
+        this.description = description;
+        this.startTime = start_time;
+        this.finishTime = finish_time;
+        this.responcebleID = responceble_id;
+        this.cost = cost;
+    }
 
     public Task() {
     }
@@ -22,27 +23,27 @@ public class Task {
     @Override
     public String toString() {
         return String.format(
-                "%s %s %s %s %s %s %s %s %s", taskNo,
-                creatorID, taskName,description, startTime, finishTime, responcebleID,cost);
+                "%s %s %s %s %s %s %s %s %s", id,
+                creatorID, taskName, description, startTime, finishTime, responcebleID, cost);
     }
 
 
-    private Integer taskNo;
+    private Integer id;
     private Integer creatorID;
     private String taskName;
     private String description;
     private Timestamp startTime;
     private Timestamp finishTime;
-     private Integer responcebleID;
-    private float cost;
+    private Integer responcebleID;
+    private BigDecimal cost;
 
 
-    public Integer getTaskNo() {
-        return taskNo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTaskNo(Integer taskNo) {
-        this.taskNo = taskNo;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCreatorID() {
@@ -86,20 +87,20 @@ public class Task {
         this.finishTime = finishTime;
     }
 
-    public float getCost() {
+    public BigDecimal getCost() {
         return cost;
     }
 
-    public void setCost(float cost) {
+    public void setCost(BigDecimal cost) {
         this.cost = cost;
     }
 
-    public Integer getResponceble() {
+    public Integer getResponcebleID() {
         return responcebleID;
     }
 
-    public void setResponceble(Integer responceble) {
-        this.responcebleID = responceble;
+    public void setResponcebleID(Integer responcebleID) {
+        this.responcebleID = responcebleID;
     }
 
 

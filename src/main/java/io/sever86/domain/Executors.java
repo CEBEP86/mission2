@@ -1,13 +1,15 @@
 package io.sever86.domain;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Администратор on 29.12.2016.
  */
 public class Executors {
-    public Executors(Integer workerId,Integer hour) {
-        this.workerId=workerId;
-        this.hour=hour;
-       }
+    public Executors(Integer workerId, BigDecimal hour) {
+        this.workerId = workerId;
+        this.hour = hour;
+    }
 
     public Executors() {
     }
@@ -15,21 +17,19 @@ public class Executors {
     @Override
     public String toString() {
         return String.format(
-                "%s %s", workerId,hour);
+                "%s %s", workerId, hour);
     }
-
 
 
     private Integer workerId;
-    private Integer hour;
+    private BigDecimal hour;
 
 
-
-    public Integer getHour() {
+    public BigDecimal getHour() {
         return hour;
     }
 
-    public void setHour(Integer hour) {
+    public void setHour(BigDecimal hour) {
         this.hour = hour;
     }
 
