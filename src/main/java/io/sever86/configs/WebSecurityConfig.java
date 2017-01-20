@@ -20,14 +20,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //.loginPage("/login.html").permitAll()
                 .usernameParameter("username").passwordParameter("password")
 
                 .and()
-                .logout().logoutSuccessUrl("/login?logout")
-
-                .permitAll();
-        http
+                .logout().logoutSuccessUrl("/login?logout");
+               http
                 .csrf().disable();
 
     }
