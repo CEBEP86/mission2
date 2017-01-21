@@ -5,29 +5,6 @@ import java.sql.Timestamp;
 
 public class Task {
 
-    public Task(Integer id, Integer creator, String task_name, String description, Timestamp start_time,
-                Timestamp finish_time, Integer responceble_id, BigDecimal cost) {
-        this.id = id;
-        this.creatorID = creator;
-        this.taskName = task_name;
-        this.description = description;
-        this.startTime = start_time;
-        this.finishTime = finish_time;
-        this.responcebleID = responceble_id;
-        this.cost = cost;
-    }
-
-    public Task() {
-    }
-
-    @Override
-    public String toString() {
-        return String.format(
-                "%s %s %s %s %s %s %s %s %s", id,
-                creatorID, taskName, description, startTime, finishTime, responcebleID, cost);
-    }
-
-
     private Integer id;
     private Integer creatorID;
     private String taskName;
@@ -36,6 +13,10 @@ public class Task {
     private Timestamp finishTime;
     private Integer responcebleID;
     private BigDecimal cost;
+
+
+    public Task() {
+    }
 
 
     public Integer getId() {

@@ -1,8 +1,6 @@
 package io.sever86.dao;
 
 import io.sever86.controllers.TaskController;
-import io.sever86.domain.Executors;
-import io.sever86.domain.Persona;
 import io.sever86.domain.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +43,7 @@ public class TaskDaoJdbcTemplate implements TaskDao {
     };
 
     public Integer addTask(Task task) {
-        KeyHolder keyHolder = new GeneratedKeyHolder(); //ID generator for BD
+        KeyHolder keyHolder = new GeneratedKeyHolder();
 
         PreparedStatementCreator preparedStatementCreator = connection -> {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO tasks(creator_id,task_name,description,start_time,finish_time,responceble_id,cost) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -73,7 +71,7 @@ public class TaskDaoJdbcTemplate implements TaskDao {
 
     public void deleteTask(Integer id) {
         jdbcTemplate.update("DELETE FROM tasks WHERE id = ?", id);
-        jdbcTemplate.update("DELETE FROM worker_on_task WHERE task_id = ?", id);
+        jdbcTemplate.update("DELETE FROM personal_on_task WHERE task_id = ?", id);
 
     }
 

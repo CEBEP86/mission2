@@ -1,7 +1,5 @@
 package io.sever86.dao;
 
-import io.sever86.domain.Executors;
-
 import io.sever86.domain.Task;
 
 import java.util.List;
@@ -12,13 +10,13 @@ import java.util.List;
 public interface
 TaskDao {
 
-    public Integer addTask(Task task);
+     Integer addTask(Task task);
 
-    public Task findOneTask(Integer id);
+     Task findOneTask(Integer id);
 
-    public List<Task> findAllTask();
+     List<Task> findAllTask();
 
-    public void deleteTask(Integer id);
+     void deleteTask(Integer id);
 
 
 }

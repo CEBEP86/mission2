@@ -1,5 +1,5 @@
 package io.sever86.dao;
-import io.sever86.domain.Executors;
+import io.sever86.domain.Executor;
 import java.util.List;
 
 /**
@@ -7,8 +7,8 @@ import java.util.List;
  */
 public interface ExecutorDao {
 
-    public void addExecutors(Integer no, Executors taskExecutors);
+     void addExecutor(Integer no, Executor taskExecutor);
 
-    public List<io.sever86.domain.Executors> findExecutors(Integer id);
+     List<Executor> findExecutor(Integer id);
 
 }

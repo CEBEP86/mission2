@@ -1,6 +1,6 @@
 package io.sever86.dao;
 
-import io.sever86.domain.Persona;
+import io.sever86.domain.Personal;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface PersonalDao {
 
-    public void addPersonal(Persona persona);
+     void addPersonal(Personal personal);
 
-    public List<Persona> loadPersonalInf();
+     List<Personal> loadPersonalInf();
 
 }

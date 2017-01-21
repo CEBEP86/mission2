@@ -23,18 +23,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username").passwordParameter("password")
 
                 .and()
-                .logout().logoutSuccessUrl("/login?logout");
-               http
+                .logout().logoutSuccessUrl("/login?logout")
+                .and()
                 .csrf().disable();
 
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("a").password("s").roles("USER");
-    }
 
     @Autowired
     DataSource dataSource;

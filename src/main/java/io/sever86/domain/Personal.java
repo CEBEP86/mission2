@@ -3,31 +3,7 @@ package io.sever86.domain;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class Persona {
-
-    public Persona(Integer id, String first_name, String last_name,
-                   String second_name, Timestamp date_birth, BigDecimal tax, String login, String password, Integer enabled ) {
-        this.id = id;
-        this.firstName = first_name;
-        this.lastName = last_name;
-        this.secondName = second_name;
-        this.dateBirth = date_birth;
-        this.tax = tax;
-        this.login = login;
-        this.password = password;
-        this.enabled = enabled;
-
-    }
-
-    public Persona() {
-    }
-
-    @Override
-    public String toString() {
-        return String.format(
-                "%s %s %s %s %s %s %s %s", id, firstName, lastName, secondName, dateBirth, tax, login, password, enabled);
-    }
-
+public class Personal {
 
     private Integer id;
     private String firstName;
@@ -37,7 +13,13 @@ public class Persona {
     private BigDecimal tax;
     private String login;
     private String password;
-    private Integer enabled;
+    private Boolean enabled;
+
+    public Personal() {
+    }
+
+
+
 
     public Integer getId() {
         return id;
@@ -47,11 +29,11 @@ public class Persona {
         this.id = id;
     }
 
-    public Integer getEabled() {
+    public Boolean getEabled() {
         return enabled;
     }
 
-    public void setEabled(Integer enabled) {
+    public void setEabled(Boolean enabled) {
         this.enabled = enabled;
     }
 

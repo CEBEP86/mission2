@@ -1,7 +1,7 @@
 package io.sever86.dao;
 
 import io.sever86.controllers.TaskController;
-import io.sever86.domain.Executors;
+import io.sever86.domain.Executor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,25 +23,25 @@ public class ExecutorDaoJdbcTemplate implements ExecutorDao {
     private static final Logger log = LoggerFactory.getLogger(TaskController.class);
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private RowMapper<Executors> rowMapperExecutors = (ResultSet rs, int rowNum) -> {
-        Executors executors = new Executors();
-        executors.setWorkerId(rs.getInt("worker_id"));
-        executors.setHour(rs.getBigDecimal("hour"));
-        return executors;
+    private RowMapper<Executor> rowMapperExecutors = (ResultSet rs, int rowNum) -> {
+        Executor executor = new Executor();
+        executor.setPersonalId(rs.getInt("personal_id"));
+        executor.setHour(rs.getBigDecimal("hour"));
+        return executor;
     };
-    public void addExecutors(Integer no, Executors executors) {
+    public void addExecutor(Integer no, Executor executor) {
         KeyHolder keyHolder = new GeneratedKeyHolder(); //ID generator for BD
         PreparedStatementCreator preparedStatementCreatorForExecutors = connection -> {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO worker_on_task(worker_id,task_id,hour) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, executors.getWorkerId());
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO personal_on_task(personal_id,task_id,hour) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, executor.getPersonalId());
             ps.setInt(2, no);
-            ps.setBigDecimal(3, executors.getHour());
+            ps.setBigDecimal(3, executor.getHour());
             return ps;
         };
         jdbcTemplate.update(preparedStatementCreatorForExecutors, keyHolder);
     }
-    public List<Executors> findExecutors (Integer id) {
-        return jdbcTemplate.query("SELECT worker_id,hour  FROM worker_on_task WHERE task_id=?", rowMapperExecutors, id);
+    public List<Executor> findExecutor(Integer id) {
+        return jdbcTemplate.query("SELECT personal_id,hour  FROM personal_on_task WHERE task_id=?", rowMapperExecutors, id);
     }
 
 }

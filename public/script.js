@@ -1,7 +1,7 @@
 {
-    var executors = [];
+    var executor = [];
     var executorHours = [];
-    var executorsIterator = 0;
+    var executorIterator = 0;
     var cost = 0;
     var personal = {};
     var notes = 0;
@@ -48,11 +48,11 @@
             }
         });
 
-        ////send executors list
-        var executorsStr = [];
+        ////send executor list
+        var executorStr = [];
         for (var i = 0; i < executorHours.length; i++) {
-            executorsStr[i] = {
-                'workerId': executors[i],
+            executorStr[i] = {
+                'personalId': executor[i],
                 'hour': executorHours[i]
             };
         }
@@ -60,8 +60,8 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             type: 'POST',
-            url: 'http://localhost:8080/create-task-add-executors',
-            data: JSON.stringify(executorsStr),
+            url: 'http://localhost:8080/create-task-add-executor',
+            data: JSON.stringify(executorStr),
             dataType: 'text',
             success: function (data) {
                 $('#results2').text(data);
@@ -81,9 +81,11 @@
             url: 'http://localhost:8080/load-personal-information',
             success: function (data) {
                 personal = data;
-                div = document.getElementById('executors');
+                div = document.getElementById('executor');
                 for (var i = 0; i < personal.length; i++)
-                    div.options[div.options.length] = new Option(personal[i].firstName, personal[i].id);
+                    div.options
+                        [div.options.length] = new Option(personal[i].firstName,
+                    personal[i].id);
                 div = document.getElementById('responceble');
                 for (var i = 0; i < personal.length; i++)
                     div.options[div.options.length] = new Option(personal[i].firstName, personal[i].id);
@@ -158,14 +160,14 @@
                             if (personal[i].id == customer['responcebleID'])
                                 div.options[div.options.length] = new Option(personal[i].firstName, personal[i].id);
 
-                        div = document.getElementById('executors');
+                        div = document.getElementById('executor');
 
                         $.ajax({
                             contentType: "application/json; charset=utf-8",
                             data: JSON.stringify(id),
                             dataType: 'text',
                             type: 'POST',
-                            url: 'http://localhost:8080/read-task-executors',
+                            url: 'http://localhost:8080/read-task-executor',
                             success: function (data) {
                                 customer = JSON.parse(data)
                                 for (var i2 = 0; i2 < customer.length; i2++) {
@@ -173,24 +175,24 @@
                                     l.id = "p1";
                                     var name = "";
                                     for (var i3 = 0; i3 < personal.length; i3++)
-                                        if (customer[i2].workerId == personal[i3].id) {
+                                        if (customer[i2].personalId == personal[i3].id) {
                                             name = personal[i3].firstName;
                                             break;
                                         }
                                     l.textContent = name + '   ' + customer[i2].hour + '  hours ';
-                                    var list = document.getElementById('executorsList');
-                                    document.getElementById('executorsList1').parentNode.removeChild(document.getElementById('executorsList1'));
-                                    document.createElement('executorsList1');
+                                    var list = document.getElementById('executorList');
+                                    document.getElementById('executorList1').parentNode.removeChild(document.getElementById('executorList1'));
+                                    document.createElement('executorList1');
                                     list.appendChild(l);
                                     l = document.createElement('p');
-                                    l.id = "executorsList1";
+                                    l.id = "executorList1";
                                     list.appendChild(l);
 
                                 }
 
                             },
                             error: function (xhr) {
-                                alert('Responceble read-task-executors: ' + xhr.responseCode);
+                                alert('Responceble read-task-executor: ' + xhr.responseCode);
                             }
                         });
                     },
@@ -239,8 +241,6 @@
         var elems = obj.parentNode.getElementsByTagName('*');
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
         elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
-        elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
-        elems[elems.length - 1].parentNode.removeChild(elems[elems.length - 1]);
         notes--;
      }
 
@@ -277,30 +277,30 @@
     }
 
 
-    function addExecutors() {
+    function addExecutor() {
         var l = document.createElement('p');
         l.id = "p1";
         var name = "";
         for (var i = 0; i < personal.length; i++)
-            if (document.getElementById('executors').value == personal[i].id) {
+            if (document.getElementById('executor').value == personal[i].id) {
                 name = personal[i].firstName;
                 cost = parseFloat(document.getElementById('hours').value) * parseFloat(personal[i].tax);
                 document.getElementById('cost').value = cost;
-                executors[executorsIterator] = personal[i].id;
-                executorHours[executorsIterator] = parseFloat(document.getElementById('hours').value);
+                executor[executorIterator] = personal[i].id;
+                executorHours[executorIterator] = parseFloat(document.getElementById('hours').value);
 
-                executorsIterator++;
+                executorIterator++;
                 break;
             }
 
         l.textContent = name + '   ' + document.getElementById('hours').value;
         l.align="center";
-        var list = document.getElementById('executorsList');
-        document.getElementById('executorsList1').parentNode.removeChild(document.getElementById('executorsList1'));
-        document.createElement('executorsList1');
+        var list = document.getElementById('executorList');
+        document.getElementById('executorList1').parentNode.removeChild(document.getElementById('executorList1'));
+        document.createElement('executorList1');
         list.appendChild(l);
         l = document.createElement('p');
-        l.id = "executorsList1";
+        l.id = "executorList1";
         list.appendChild(l);
 
     }
