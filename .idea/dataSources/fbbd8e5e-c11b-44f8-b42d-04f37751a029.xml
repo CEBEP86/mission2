@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PostgreSQL - TaskApplication@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+    <root id="1"/>
+    <database id="2" parent="1" name="TaskApplication">
+      <ObjectId>16596</ObjectId>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12373</ObjectId>
+    </database>
+    <database id="4" parent="1" name="test">
+      <ObjectId>16393</ObjectId>
+    </database>
+    <schema id="5" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2016-11-30.09:36:38.797</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1094</IntrospectionStateNumber>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="6" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="information_schema">
+      <ObjectId>12081</ObjectId>
+    </schema>
+    <table id="11" parent="5" name="task">
+      <ObjectId>17152</ObjectId>
+      <StateNumber>1094</StateNumber>
+    </table>
+    <column id="12" parent="11" name="id">
+      <DataType>integer|0</DataType>
+      <StateNumber>1094</StateNumber>
+    </column>
+    <column id="13" parent="11" name="task_text">
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1094</StateNumber>
+    </column>
+  </database-model>
+</dataSource>
