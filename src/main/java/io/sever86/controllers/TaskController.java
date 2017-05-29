@@ -7,6 +7,7 @@ import io.sever86.dao.TaskDao;
 import io.sever86.domain.Executor;
 import io.sever86.domain.Personal;
 import io.sever86.domain.Task;
+import io.sever86.domain.Task2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class TaskController {
 
 
     @Transactional
-    @RequestMapping(method = RequestMethod.POST, path = "/create-task")
+    @RequestMapping(method = RequestMethod.POST, path = "/api/create-task")
     @ResponseBody
     public String createTask(@RequestBody Task input_information) {
         inputTask = input_information;
@@ -51,8 +52,16 @@ public class TaskController {
     }
 
 
+
+    @RequestMapping(method = RequestMethod.POST, path = "/api/test")
+    @ResponseBody
+    public String createTaskAddExecutor(@RequestBody Task2 input_information) {
+    return "ok";
+    }
+
+
     @Transactional
-    @RequestMapping(method = RequestMethod.POST, path = "/create-task-add-executor")
+    @RequestMapping(method = RequestMethod.POST, path = "/api/сreate-task-add-executor")
     @ResponseBody
     public String createTaskAddExecutor(@RequestBody List<Executor> input_information) {
         inputExecutor = input_information;
@@ -77,36 +86,42 @@ public class TaskController {
 
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/read-task-executor")
+    @RequestMapping(method = RequestMethod.GET, path = "/api/read-task-executor/{id}")
     @ResponseBody
-    public List<Executor> createTaskAddExecutor(@RequestBody Integer input_information) {
-        return executorDao.findExecutor(input_information);
+    public List<Executor> createTaskAddExecutor(@PathVariable Integer id) {
+        return executorDao.findExecutor(id);
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, path = "/read-task")
+    @RequestMapping(method = RequestMethod.GET, path = "/api/read-task/{id}")
     @ResponseBody
-    public Task readTask(@RequestBody Integer input_information) {
-        return taskDao.findOneTask(input_information);
+    public Task readTask(@PathVariable Integer id) {
+        return taskDao.findOneTask(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/find-all-tasks")
+
+
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/find-all-tasks")
     @ResponseBody
     public List<Task> findAllTasksClient() {
         return taskDao.findAllTask();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/load-personal-information")
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/load-personal-information")
     @ResponseBody
     public List<Personal> loadPersonalInformation() {
         return personalDao.loadPersonalInf();
     }
 
     @Transactional
-    @RequestMapping(method = RequestMethod.POST, path = "/remove-task")
+    @RequestMapping(method = RequestMethod.DELETE , path = "/api/remove-task/{id}")
     @ResponseBody
-    public String removeTask(@RequestBody Integer input_information) {
-            taskDao.deleteTask(input_information);
+    public String removeTask(@PathVariable Integer id) {
+            taskDao.deleteTask(id);
           return "ok";
     }
 

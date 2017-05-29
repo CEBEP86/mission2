@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Create</title>
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script src="../bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="../bootstrap-3.3.5-dist/css/bootstrap.css"/>
+<body onload="loadPersonalInformation()">
+<tr align="center">
+    <td class="top" colspan="2"><h2 style="color:#096699" align="center">CREATE TASK LIST</h2></td>
+</tr>
+<tr align="center">
+    <td class="news">
+        <p align="center"><input maxlength="25" size="18" id="name" value="name"></p>
+        <p align="center"><textarea id="description">description</textarea></p>
+
+        <p align="center"><input maxlength="25" size="18" id="timezone" value="timezone"></p>
+        <p align="center"><input maxlength="25" size="18" id="start" value="2017-01-07 07:34:38.602+02"></p>
+        <p align="center"><input maxlength="25" size="18" id="stop" value="2017-01-07 07:34:38.602+02"</p>
+        <p align="center"><select class="selectpicker" data-style="btn-prymary" id="responceble"> </select> responceble
+        </p>
+        <p align="center">
+            <select id="executor" class="selectpicker" data-style="btn-prymary">
+            </select><input id="hours" maxlength="25" size="5" value="hours">
+            <input type="button" id="b1" value="add" onclick="addExecutor();" class="btn btn-primary">
+        </p>
+    <td align="center" id="executorList">
+        <ol id="executorList1">
+            <p align="center"> None executor</p>
+        </ol>
+        <ol id="executorList">
+        </ol>
+    </td>
+    <p align="center"><input maxlength="25" size="18" value="cost" id="cost"></p>
+    <form align="center">
+        <input type="button" id="b1" value="ABORT" onclick="goTaskList();" class="btn btn-primary">
+        <input type="button" id="b1" value="CREATE" onclick="CreateTask();" class="btn btn-primary">
+    </form>
+  </td>
+   <td>
+        <div id='results1' name="results">.</div>
+        <div id='results2' name="results">.</div>
+    </td>
+</tr>
+</body>
+</html>
